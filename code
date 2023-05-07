@@ -1,0 +1,50 @@
+class ElectricKettle:
+    def __init__(self, capacity=1.7):
+        self.capacity = capacity
+        self.current_water_level = 0
+        self.powered_on = False
+
+    def add_water(self, amount):
+        if self.current_water_level + amount <= self.capacity:
+            self.current_water_level += amount
+            print(f"Added {amount}L of water. Current water level: {self.current_water_level}L")
+        else:
+            print("Water exceeds the kettle's capacity.")
+
+    def heat_water(self):
+        if self.current_water_level > 0:
+            if self.powered_on:
+                print("Heating water...")
+                # Simulating the heating process
+                self.current_water_level -= 0.1
+                print("Water heated.")
+            else:
+                print("The kettle is not powered on.")
+        else:
+            print("No water in the kettle.")
+
+    def power_on(self):
+        self.powered_on = True
+        print("Kettle powered on.")
+
+    def power_off(self):
+        self.powered_on = False
+        print("Kettle powered off.")
+
+
+# Example usage
+kettle = ElectricKettle()
+
+kettle.add_water(1.5)  # Add 1.5L of water
+kettle.power_on()  # Power on the kettle
+kettle.heat_water()  # Start heating the water
+
+kettle.add_water(1.0)  # Try to add more water (exceeding capacity)
+kettle.power_off()  # Power off the kettle
+kettle.heat_water()  # Try to heat the water (kettle not powered on)
+
+kettle.add_water(0.5)  # Add 0.5L of water
+kettle.power_on()  # Power on the kettle
+kettle.heat_water()  # Start heating the water
+kettle.power_off()  # Power off the kettle
+kettle.heat_water()  # Try to heat the water (kettle not powered on)
